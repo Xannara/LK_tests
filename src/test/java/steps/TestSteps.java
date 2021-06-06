@@ -4,6 +4,8 @@ import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.*;
 
 public class TestSteps {
@@ -37,7 +39,7 @@ public class TestSteps {
         $(".input_type_tel .input__control").setValue("74845838968").shouldBe(visible);
         $(".input_type_password .input__control").setValue("kN2mBveyEGLp").shouldBe(visible);
         $(".button .button__content .button__text").click();
-        $(".button-menu__name").shouldHave(text("СТРОИТЕЛЬНАЯ КОМПАНИЯ ОЛИМП"));
+       // $(".button-menu__name").shouldHave(text("СТРОИТЕЛЬНАЯ КОМПАНИЯ ОЛИМП"));
     }
 
     @Step ("АТК-54")
@@ -158,7 +160,7 @@ public class TestSteps {
     @Step("Смена пароля")
     public void changePassword() {
         $(".header-button-bar__menu .icon_name_arrow-down").click();
-        $(".header-popup-menu__item-button .icon_name_logout").click();
+        $(byText("Изменить пароль")).click();
 
         $(".modal-password-change .input_view_filled .input__control").click();
         $(".modal-password-change .input_view_filled .input__control").setValue("000000");
@@ -166,8 +168,8 @@ public class TestSteps {
         $(".modal-password-change .input_view_filled .input__control").click();
         $(".modal-password-change .input_view_filled .input__control").setValue("kN2mBveyEGLp");
 
-        $(".input__control:nth-child(3)").click();
-        $(".input__control:nth-child(3)").setValue("kN2mBveyEGLp");
+        $$(".modal-password-change .input_view_filled .input__control").get(1).click();
+        $$(".modal-password-change .input_view_filled .input__control").get(1).setValue("kN2mBveyEGLp");
 
         $(".modal-password-change__btn-block .button_view_extra").click();
         $(".modal-password-change__btn-block .button_size_l").click();
@@ -179,5 +181,68 @@ public class TestSteps {
     @Step ("Смена компании")
     public void changeCompany() {
 
+        $(".page-cabinet__content .contract-statistics__header .contract-statistics__title").shouldHave(text("Все договоры"));
+
+        if (($$(byXpath("//*[contains(text(),'16%')]")).isEmpty()))  {
+          //  if ($$(".page-cabinet__header .header-button-bar__menu .button-menu__name").$$(byText("ООО \"СТРОИТЕЛЬНАЯ КОМПАНИЯ ОЛИМП\"")).size() == 0 ) {
+            $(".header-button-bar__menu .icon_name_arrow-down").click();
+            $$(".header-popup-menu .organizations__item .item-button__text").get(1).click();
+
+            $(".header-button-bar__menu .icon_name_arrow-down").click();
+            $(".header-popup-menu__item-button .icon_name_logout").click();
+        } else
+            //if ($(byText("ООО \"АЛЬТ-ПРОФИ\"")).exists())
+            //if ($(".page-cabinet__header .header-button-bar__menu .button-menu__name").shouldNotHave(text("ООО \"СТРОИТЕЛЬНАЯ КОМПАНИЯ ОЛИМП\"")).isEnabled())
+          //   ($(".page-cabinet__header .header-button-bar__menu .button-menu__name").$(byText("ООО \"АЛЬТ-ПРОФИ\"")).isDisplayed())
+    // if ($(".page-cabinet__header .header-button-bar__menu .button-menu__name").shouldHave(text("ООО \"АЛЬТ-ПРОФИ\"")).isDisplayed())
+        {
+            $(".header-button-bar__menu .icon_name_arrow-down").click();
+            $$(".header-popup-menu .organizations__item .item-button__text").get(0).click();
+
+            $(".header-button-bar__menu .icon_name_arrow-down").click();
+            $(".header-popup-menu__item-button .icon_name_logout").click();
+        }
+       // $(".header-button-bar__menu .icon_name_arrow-down").click();
+       // $$(".header-popup-menu .organizations__item").get(0).click();
+
+      //  $(".header-button-bar__menu .icon_name_arrow-down").click();
+      //  $(".header-popup-menu__item-button .icon_name_logout").click();
+
+      //  $(".input_type_tel .input__control").setValue("74845838968").shouldBe(visible);
+       // $(".input_type_password .input__control").setValue("kN2mBveyEGLp").shouldBe(visible);
+      //  $(".button .button__content .button__text").click();
+
+       // $(".header-button-bar__menu .icon_name_arrow-down").click();
+     //   $$(".header-popup-menu .organizations__item").get(1).click();
+
+       // $(".header-button-bar__menu .icon_name_arrow-down").click();
+      //  $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Восстановление пароля")
+    public void updatePassword() {
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+
+        $(".link-auth .btn-view-link").click();
+
+        $(".phone-input .input__control").click();
+        $(".phone-input .input__control").setValue("9609901525").shouldBe(visible);
+
+        $(".button_view_extra .button__content").click();
+
+        $(".input_type_text .input__control").click();
+        $(".input_type_text .input__control").setValue("000000");
+
+        $(".form-new-password__input-password .input_type_password .input__control").click();
+        $(".form-new-password__input-password .input_type_password .input__control").setValue("WK9x650x");
+
+        $$(".form-field_size_m .input_type_password .input__control").get(1).click();
+        $$(".form-field_size_m .input_type_password .input__control").get(1).setValue("WK9x650x");
+
+        $(".button_view_extra .button__content").click();
+        $(".form-success__title").shouldHave(text("Пароль сохранён"));
+        $(".btn-mobile .button__content").click();
+        $(".page-cabinet__content .contract-statistics__header .contract-statistics__title").shouldHave(text("Все договоры"));
     }
 }

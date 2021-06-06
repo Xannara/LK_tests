@@ -13,11 +13,12 @@ public class ChangeCompany extends TestBase{
 
     @Test
     @Owner("ovchernyshenko")
-    @Story("Password")
+    @Story("Change Company")
     @DisplayName("Проверка смены компании")
-    public void cahngeCompany() {
+    public void changeCompanyTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
         steps.userOlimp();
+        steps.changeCompany();
     }
 }
