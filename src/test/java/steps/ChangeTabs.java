@@ -7,18 +7,18 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class TransitionToContracts extends TestBase{
+public class ChangeTabs extends TestBase{
 
     private TestSteps steps = new TestSteps();
 
     @Test
     @Owner("ovchernyshenko")
     @Story("Transition")
-    @DisplayName("Перемещение по контрактам")
-    public void transitionToContractsTest() {
+    @DisplayName("Переключение по вкладкам")
+    public void changeTabsTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
-        steps.userGolikov();
-        steps.transitionToContracts();
+        steps.userKvinta();
+        steps.changeTabs();
     }
 }

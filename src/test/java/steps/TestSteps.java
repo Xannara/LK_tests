@@ -245,4 +245,16 @@ public class TestSteps {
         $(".btn-mobile .button__content").click();
         $(".page-cabinet__content .contract-statistics__header .contract-statistics__title").shouldHave(text("Все договоры"));
     }
+
+    @Step("Переключение по вкладкам")
+    public void changeTabs() {
+        $(byText("История платежей")).click();
+        $(byText("У вас нет оплаченных платежей за выбранный период. Возможно, вы еще не оплатили.")).shouldBe(visible);
+        $(byText("График платежей")).click();
+        $(byText("Ежемесячный платёж")).shouldBe(visible);
+        $(byText("Документы")).click();
+        $(byText("Скан-копии документов по договорам")).shouldBe(visible);
+        $(byText("Счета на оплату")).click();
+        $(byText("Данные об оплате обновляются после 14:00")).shouldBe(visible);
+    }
 }
