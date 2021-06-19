@@ -1,5 +1,6 @@
 package steps;
 
+import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.text;
@@ -146,7 +147,7 @@ public class TestSteps {
         $(".header-popup-menu__item-button .icon_name_logout").click();
     }
 
-    @Step ("Скачивание пени")
+    @Step ("Скачивание пени с обзорной страницы")
     public void downloadPenalty() {
         $(".payment-group-line__icon").click();
         $x("//*[contains(text(), 'Скачать')]").click();
@@ -256,5 +257,85 @@ public class TestSteps {
         $(byText("Скан-копии документов по договорам")).shouldBe(visible);
         $(byText("Счета на оплату")).click();
         $(byText("Данные об оплате обновляются после 14:00")).shouldBe(visible);
+    }
+
+    @Step("Негативные сценарии авторизации")
+    public void negativeAuthorization() {
+        $(".input_type_tel .input__control").setValue("906830005");
+        $(".input_type_password .input__control").setValue("kN2mBveyEGLp");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+
+        $(".input_type_tel .input__control").setValue("9068300056");
+        $(".input_type_password .input__control").setValue("kN2mBveyEGLp");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+
+        $(".input_type_tel .input__control").setValue("9068300055");
+        $(".input_type_password .input__control").setValue("kN2mBveyEGL");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+
+        $(".input_type_tel .input__control").setValue("9068300055");
+        $(".input_type_password .input__control").setValue("kN3mBveyEGLp");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+
+        $(".input_type_tel .input__control").setValue("9068300055");
+        $(".input_type_password .input__control").setValue(" kN2mBveyEGLp");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+
+        $(".input_type_tel .input__control").setValue("9068300055");
+        $(".input_type_password .input__control").setValue("kN2mBveyEGLp ");
+        $(".button .button__content .button__text").click();
+        $(byText("Неправильный номер телефона или пароль")).shouldBe(visible);
+        Selenide.refresh();
+    }
+
+    @Step("Скачивание пени из договора")
+    public void downloadPenaltyFromContractTest() {
+        $x("//*[contains(text(), 'HYUNDAI Solaris')]").click();
+        $(".contract-statistics__subtitle").shouldHave(text("Т333ЕК56 / 19874-ОРБ-19-Л от 18.11.2019"));
+        $(".payment-group-line__icon").click();
+        $x("//*[contains(text(), 'Скачать')]").click();
+        $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Скачивание счета на оплату")
+    public void downloadDocument() {
+        $(byText("Документы")).click();
+        $(byText("Скан-копии документов по договорам")).shouldBe(visible);
+        $(".document-group-line").click();
+        $x("//*[contains(text(), 'Скачать')]").click();
+        $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Скачивание счета на оплату из договора")
+    public void downloadDocumentFromContract() {
+        $x("//*[contains(text(), 'HYUNDAI Solaris')]").click();
+        $(".contract-statistics__subtitle").shouldHave(text("Т333ЕК56 / 19874-ОРБ-19-Л от 18.11.2019"));
+        $(byText("Документы")).click();
+        $(byText("Скан-копии документов по договору")).shouldBe(visible);
+        $(".document-group-line").click();
+        $x("//*[contains(text(), 'Скачать')]").click();
+        $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
     }
 }
