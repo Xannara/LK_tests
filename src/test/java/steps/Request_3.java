@@ -7,17 +7,17 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class Request_2 extends TestBase{
+public class Request_3 extends TestBase{
     private TestSteps steps = new TestSteps();
 
     @Test
     @Owner("ovchernyshenko")
     @Story("Requests")
-    @DisplayName("Справка")
-    public void request2Test() {
+    @DisplayName("Изменение реквизитов")
+    public void request3Test() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
         steps.userDrinevskaya();
-        steps.request2();
+        steps.request3();
     }
 }
