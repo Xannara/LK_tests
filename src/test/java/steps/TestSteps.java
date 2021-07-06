@@ -376,7 +376,11 @@ public class TestSteps {
         $(".textarea__inner .textarea__control").setValue("Заявка на реструктуризацию создана автотестом");
         $x("//*[contains(text(), 'Отправить запрос')]").click();
 
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
         $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
     }
 
     @Step("Справка")
@@ -405,6 +409,12 @@ public class TestSteps {
         $(".input__inner .input__control", 1).click();
         $(".input__inner .input__control", 1).setValue("Moscow");
         $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
     }
 
     @Step("Изменение реквизитов")
@@ -433,13 +443,19 @@ public class TestSteps {
         $(".textarea__inner .textarea__control").click();
         $(".textarea__inner .textarea__control").setValue("Запрос создан автотестом");
         $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
     }
 
     @Step("Страхование")
     public void request4() {
         $(".button-send-request").click();
         Selenide.switchTo().window("Запросы | Альфа-лизинг");
-         $x("//*[contains(text(), 'Создать новый')]").click();
+        // $x("//*[contains(text(), 'Создать новый')]").click();
         $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
         $(".select-button__content").click();
         $(".menu-item:nth-child(4)").click();
@@ -456,5 +472,244 @@ public class TestSteps {
         $(".textarea__inner .textarea__control").click();
         $(".textarea__inner .textarea__control").setValue("Запрос создан автотестом");
         $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
     }
+
+    @Step("Пени")
+    public void request5() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+        // $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(5)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+        $x("//*[contains(text(), 'Продолжить')]").click();
+
+        $(".textarea__inner .textarea__control").click();
+        $(".textarea__inner .textarea__control").setValue("Запрос создан автотестом");
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Временная выдача второго ключа зажигания")
+    public void request6() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+        // $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(6)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+        $x("//*[contains(text(), 'Да')]").click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+
+        $(".textarea__inner .textarea__control").click();
+        $(".textarea__inner .textarea__control").setValue("Запрос создан автотестом");
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Временная выдача ПТС")
+    public void request7() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+        // $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(7)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+        $x("//*[contains(text(), 'Да')]").click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+
+        $(".textarea__inner .textarea__control").click();
+        $(".textarea__inner .textarea__control").setValue("Запрос создан автотестом");
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Досрочный/плановый выкуп")
+    public void request8() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+        // $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(8)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Страховой случай")
+    public void request9() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+        // $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(9)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(".input__box .input__control").setValue("05.07.2021");
+        $x("//*[contains(text(), 'Хищение (угон, кража)')]").click();
+        $x("//*[contains(text(), 'Нет')]").click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(".input__box .input__control", 0).setValue("12345678");
+        $(".input__box .input__control", 1).setValue("87654321");
+        $(".input__box .input__control", 2).setValue("нет");
+        $x("//*[contains(text(), 'Не нужна')]").click();
+        $x("//*[contains(text(), 'Ремонт')]").click();
+
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Цессия")
+    public void request10() {
+        $(".button-send-request").click();
+        Selenide.switchTo().window("Запросы | Альфа-лизинг");
+         $x("//*[contains(text(), 'Создать новый')]").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
+        $(".select-button__content").click();
+        $(".menu-item:nth-child(10)").click();
+        $(".select-contracts__field").click();
+        $(".item:nth-child(3)").click();
+        $(byText("Выберите категорию запроса. Заполните дополнительные поля")).click();
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byAttribute("value","Дриневская  Юлия Юрьевна")).shouldBe(visible);
+        $(byAttribute("value","Директор")).shouldBe(visible);
+        $(byAttribute("value","vaguz@alfaleasing.ru")).shouldBe(visible);
+        $(byAttribute("value","+7 (960) 990-15-25")).shouldBe(visible);
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(byText("Копия паспорта генерального директора Цессионария и поручителей (все страницы)")).shouldBe(visible);
+        $("#directorPassportCopy").uploadFromClasspath("Копия паспорта директора.txt");
+        $(byText("Копия договора на аренду помещения (или свидетельство о собственности)")).shouldBe(visible);
+        $("#rentalAgreementCopy").uploadFromClasspath("Копия договора на аренду.txt");
+        $(byText("Карточка реквизитов контрагента")).shouldBe(visible);
+        $("#contractorRequisitesCard").uploadFromClasspath("Карточка реквизитов КА.txt");
+        $(byText("Протокол/решение о назначении генерального директора")).shouldBe(visible);
+        $("#appointmentDirectorCopy").uploadFromClasspath("Копия решения о назначении директора.txt");
+        $(byText("Протокол собрания акционеров")).shouldBe(visible);
+        $("#shareholderDecisionProtocol").uploadFromClasspath("Протокол собрания акционеров.txt");
+        $(byText("Копия 3-х договоров с ключевыми заказчиками/покупателями")).shouldBe(visible);
+        $("#existingContractsKeyCustomersCopy").uploadFromClasspath("Копия трех договоров.txt");
+        $(byText("Бухгалтерский баланс и отчет о финансовых результатах за последний отчетный период")).shouldBe(visible);
+        $("#existingContractsKeyCustomersCopy").uploadFromClasspath("Бухгалтерская отчетность за последний отчетный период.txt");
+        $(byText("Бухгалтерский баланс и отчет о финансовых результатах за последний год")).shouldBe(visible);
+        $("#financialStatementsYearF12ReceiptIfns").uploadFromClasspath("Бухгалтерская отчетность за последний отчетный год.txt");
+        $(byText("Налоговая декларация по налогу на прибыль за последнюю отчетную дату")).shouldBe(visible);
+        $("#taxReturnIncomeDateReceiptIfns").uploadFromClasspath("Налоговая декларация по налогу на прибыль на последнюю отчетную дату.txt");
+        $(byText("Справка из обслуживающего банка по расчетным счетам за 12 месяцев")).shouldBe(visible);
+        $("#clientBankTxt").uploadFromClasspath("Справка из обслуживающего банка.txt");
+        $(byText("Анализ счета 51 за последние 12 месяцев с разбивкой кор. счета 51 и 62 и банкам")).shouldBe(visible);
+        $("#51Ammount12monthsExcel").uploadFromClasspath("Анализ счета 51.txt");
+        $(byText("Выписка из интернет-банка в формате Export to 1C по всем счетам и по всем направлениям бизнеса за последние 12 месяцев")).shouldBe(visible);
+        $("#certificateBank").uploadFromClasspath("Выгрузка из системы Клиент-банк.txt");
+        $(byText("Свидетельство о государственной регистрации юридического лица")).shouldBe(visible);
+        $("#copyOfRegistrationBusiness").uploadFromClasspath("Свидетельство о гос регистрации ЮЛ.txt");
+        $(byText("Копия действующего устава и все внесенные в него изменения")).shouldBe(visible);
+        $("#charterCopy").uploadFromClasspath("Копия устава с изменениями.txt");
+        $(byText("Штамп входящего контроля ФНС / копия описи вложения при отправке почтой / протокол приема файла ФНС при отправке через интернет (для декларации по налогу на прибыль и бухгалтерского баланса и отчета о финансовых результатах)")).shouldBe(visible);
+        $("#certificateFnsStateSettlements").uploadFromClasspath("Штамп входящего контроля ФНС.txt");
+        $(byText("Анкета ЮЛ (цессионарий)")).shouldBe(visible);
+        $("#ulProfileTransferee").uploadFromClasspath("Анкета ЮЛ цессионарий.xlsm");
+        $(byText("Анкета ЮЛ (цедент - поручитель). Цедент – предыдущий Лизингополучатель")).shouldBe(visible);
+        $("#ulProfile").uploadFromClasspath("Анкета ЮЛ цедент.xlsm");
+        $(byText("Анкета ЕИО (цессионарий)")).shouldBe(visible);
+        $("#eioProfileTransferee").uploadFromClasspath("Анкета ЕИО цессионарий.xlsm");
+        $(byText("Анкета ЕИО (цедент - поручитель)")).shouldBe(visible);
+        $("#eioProfile").uploadFromClasspath("Анкета ЕИО цедент.xlsm");
+        $(byText("Анкета ФЛ (собственник цессионария - поручитель)")).shouldBe(visible);
+        $("#flProfile").uploadFromClasspath("Анкета ФЛ.xlsm");
+
+        $x("//*[contains(text(), 'Продолжить')]").click();
+        $(".textarea__inner .textarea__control").click();
+        $(".textarea__inner .textarea__control").setValue("Причины необходимости замены Лизингополучателя");
+
+        $(".input__box .input__control", 0).setValue("1655297756");
+        $(".input__box .input__control", 1).setValue("044525593");
+        $(".input__box .input__control", 2).setValue("АО \"АЛЬФА-БАНК\" г. Москва");
+        $(".input__box .input__control", 3).setValue("30101810200000000593");
+        $(".input__box .input__control", 4).setValue("40702810402750001774");
+        $(".input__box .input__control", 5).setValue("165501001");
+        $(".input__box .input__control", 6).setValue("г. Москва");
+        $(".input__box .input__control", 7).setValue("Дриневская  Юлия Юрьевна");
+        $(".input__box .input__control", 8).setValue("+7 (960) 990-15-25");
+
+        $x("//*[contains(text(), 'Отправить запрос')]").click();
+
+        $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
+        $x("//*[contains(text(), 'Вернуться в личный кабинет')]").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
 }
