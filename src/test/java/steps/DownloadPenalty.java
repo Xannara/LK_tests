@@ -18,8 +18,7 @@ public class DownloadPenalty extends TestBase{
     public void downloadPenaltyTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
-        steps.userKvinta();
+        steps.userOsertrov();
         steps.downloadPenalty();
-        //сделать проверку что документ скачался
     }
 }

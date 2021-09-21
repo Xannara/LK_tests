@@ -14,11 +14,10 @@ public class DownloadDocument extends TestBase{
     @Owner("ovchernyshenko")
     @Story("Download")
     @DisplayName("Проверка скачивания счета на оплату")
-    public void downloadPenaltyFromContractTest() {
+    public void downloadDocumentTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
         steps.userGolikov();
         steps.downloadDocument();
-        //сделать проверку что документ скачался
     }
 }

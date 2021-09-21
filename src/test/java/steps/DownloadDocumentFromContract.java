@@ -19,6 +19,5 @@ public class DownloadDocumentFromContract extends TestBase{
         steps.openMainPage();
         steps.userGolikov();
         steps.downloadDocumentFromContract();
-        //сделать проверку что документ скачался
     }
 }

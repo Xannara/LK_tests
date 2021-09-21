@@ -7,16 +7,17 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class UpdatePassword extends TestBase{
+public class DownloadAct extends TestBase{
     private TestSteps steps = new TestSteps();
 
     @Test
     @Owner("ovchernyshenko")
-    @Story("Password")
-    @DisplayName("Проверка восстановления пароля")
-    public void updatePasswordTest() {
+    @Story("Download")
+    @DisplayName("Проверка скачивания акта сверки")
+    public void downloadActTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
-        steps.updatePassword();
+        steps.userGolikov();
+        steps.downloadAct();
     }
 }

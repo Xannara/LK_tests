@@ -14,7 +14,7 @@ public class Request_26 extends TestBase{
     @Owner("ovchernyshenko")
     @Story("Requests")
     @DisplayName("Возврат денежных средств")
-    public void request26Test() {
+    public void request26Test() throws InterruptedException {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
         steps.userDrinevskaya();

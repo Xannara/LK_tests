@@ -19,6 +19,5 @@ public class DownloadPenaltyFromContract extends TestBase{
         steps.openMainPage();
         steps.userGolikov();
         steps.downloadPenaltyFromContractTest();
-        //сделать проверку что документ скачался
     }
 }

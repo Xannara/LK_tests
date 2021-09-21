@@ -15,11 +15,10 @@ public class SendEmailTest extends TestBase{
     @Owner("ovchernyshenko")
     @Story("Send")
     @DisplayName("Проверка отправки письма")
-    public void sendEmailTest() {
+    public void sendEmailTest() throws InterruptedException {
         SelenideLogger.addListener("allure", new AllureSelenide());
         steps.openMainPage();
-        steps.userKvinta();
+        steps.userGolikov();
         steps.sendEmail();
-        //сделать проверку что письмо отправилось
     }
 }

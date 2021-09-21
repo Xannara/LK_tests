@@ -3,6 +3,8 @@ package steps;
 import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.*;
@@ -29,7 +31,7 @@ public class TestSteps {
     @Step ("ИП Дриневская Ю.Ю.")
     public void userDrinevskaya() {
         $(".input_type_tel .input__control").setValue("9609901525").shouldBe(visible);
-        $(".input_type_password .input__control").setValue("WK9x650x").shouldBe(visible);
+        $(".input_type_password .input__control").setValue("Qazwsxedc12").shouldBe(visible);
         $(".button .button__content .button__text").click();
         $(".button-menu__name").shouldHave(text("ИП Дриневская Ю. Ю."));
     }
@@ -39,7 +41,6 @@ public class TestSteps {
         $(".input_type_tel .input__control").setValue("74845838968").shouldBe(visible);
         $(".input_type_password .input__control").setValue("kN2mBveyEGLp").shouldBe(visible);
         $(".button .button__content .button__text").click();
-       // $(".button-menu__name").shouldHave(text("СТРОИТЕЛЬНАЯ КОМПАНИЯ ОЛИМП"));
     }
 
     @Step ("АТК-54")
@@ -132,7 +133,7 @@ public class TestSteps {
     }
 
     @Step ("Отправка письма")
-    public void sendEmail() {
+    public void sendEmail() throws InterruptedException {
         $(".payment-group-line__icon").click();
         $(".toolbar__button:nth-child(1) > span").click();
         $(".input_has-autocomplete .input__input-wrapper .input__control").click();
@@ -140,6 +141,9 @@ public class TestSteps {
         $(".modal-papers-send__textarea .textarea__control").click();
         $(".modal-papers-send__textarea .textarea__control").setValue("Письмо создано автотестом").shouldBe(visible);
         $(".modal-papers-send__btn-block .button_view_extra").click();
+        $(".notification_visible .notification__closer").click();
+
+        $x("//*[contains(text(), 'Счета успешно отправлены')]").shouldBe(visible, Duration.ofSeconds(30));
         $(".notification_visible .notification__closer").click();
 
         $(".header-button-bar__menu .icon_name_arrow-down").click();
@@ -151,6 +155,9 @@ public class TestSteps {
         $(".payment-group-line__icon").click();
         $x("//*[contains(text(), 'Скачать')]").click();
         $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $x("//*[contains(text(), 'Архив создан успешно')]").shouldBe(visible, Duration.ofSeconds(30));
         $(".notification_visible .notification__closer").click();
 
         $(".header-button-bar__menu .icon_name_arrow-down").click();
@@ -221,13 +228,11 @@ public class TestSteps {
 
     @Step("Восстановление пароля")
     public void updatePassword() {
-        $(".header-button-bar__menu .icon_name_arrow-down").click();
-        $(".header-popup-menu__item-button .icon_name_logout").click();
 
         $(".link-auth .btn-view-link").click();
 
         $(".phone-input .input__control").click();
-        $(".phone-input .input__control").setValue("9609901525").shouldBe(visible);
+        $(".phone-input .input__control").setValue("79068300055").shouldBe(visible);
 
         $(".button_view_extra .button__content").click();
 
@@ -235,10 +240,10 @@ public class TestSteps {
         $(".input_type_text .input__control").setValue("000000");
 
         $(".form-new-password__input-password .input_type_password .input__control").click();
-        $(".form-new-password__input-password .input_type_password .input__control").setValue("WK9x650x");
+        $(".form-new-password__input-password .input_type_password .input__control").setValue("kN2mBveyEGLp");
 
         $$(".form-field_size_m .input_type_password .input__control").get(1).click();
-        $$(".form-field_size_m .input_type_password .input__control").get(1).setValue("WK9x650x");
+        $$(".form-field_size_m .input_type_password .input__control").get(1).setValue("kN2mBveyEGLp");
 
         $(".button_view_extra .button__content").click();
         $(".form-success__title").shouldHave(text("Пароль сохранён"));
@@ -306,6 +311,9 @@ public class TestSteps {
         $(".notification__title").click();
         $(".notification_visible .notification__closer").click();
 
+        $x("//*[contains(text(), 'Архив создан успешно')]").shouldBe(visible, Duration.ofSeconds(30));
+        $(".notification_visible .notification__closer").click();
+
         $(".header-button-bar__menu .icon_name_arrow-down").click();
         $(".header-popup-menu__item-button .icon_name_logout").click();
     }
@@ -317,6 +325,9 @@ public class TestSteps {
         $(".document-group-line").click();
         $x("//*[contains(text(), 'Скачать')]").click();
         $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $x("//*[contains(text(), 'Архив создан успешно')]").shouldBe(visible, Duration.ofSeconds(30));
         $(".notification_visible .notification__closer").click();
 
         $(".header-button-bar__menu .icon_name_arrow-down").click();
@@ -332,6 +343,9 @@ public class TestSteps {
         $(".document-group-line").click();
         $x("//*[contains(text(), 'Скачать')]").click();
         $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $x("//*[contains(text(), 'Архив создан успешно')]").shouldBe(visible, Duration.ofSeconds(30));
         $(".notification_visible .notification__closer").click();
 
         $(".header-button-bar__menu .icon_name_arrow-down").click();
@@ -635,7 +649,7 @@ public class TestSteps {
     public void request10() {
         $(".button-send-request").click();
         Selenide.switchTo().window("Запросы | Альфа-лизинг");
-         //$x("//*[contains(text(), 'Создать новый')]").click();
+         $x("//*[contains(text(), 'Создать новый')]").click();
         $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
         $(".select-button__content").click();
         $(".menu-item:nth-child(10)").click();
@@ -713,7 +727,7 @@ public class TestSteps {
     }
 
     @Step("Цессия с выкупом")
-    public void request11() {
+    public void request11() throws InterruptedException {
         $(".button-send-request").click();
         Selenide.switchTo().window("Запросы | Альфа-лизинг");
         //$x("//*[contains(text(), 'Создать новый')]").click();
@@ -736,7 +750,7 @@ public class TestSteps {
         $("#ipProfile").uploadFromClasspath("Анкета ИП.xlsm");
 
        // $x("//*[contains(text(), 'Продолжить')]").click();
-
+        Thread.sleep(4000);
         $(".template-editor__button-continue").click();
 
         $(".input__box .input__control", 0).setValue("06.07.2021");
@@ -1229,7 +1243,7 @@ public class TestSteps {
     }
 
     @Step("Возврат денежных средств")
-    public void request26() {
+    public void request26() throws InterruptedException {
         $(".button-send-request").click();
         Selenide.switchTo().window("Запросы | Альфа-лизинг");
         // $x("//*[contains(text(), 'Создать новый')]").click();
@@ -1250,6 +1264,9 @@ public class TestSteps {
         $(byText("Заявление на возврат денежных средств")).shouldBe(visible);
         $("#zayavleniye").uploadFromClasspath("Анкета ЕИО цессионарий.xlsm");
 
+        Thread.sleep(4000);
+
+        $x("//*[contains(text(), 'Отправить запрос')]").shouldBe(visible, Duration.ofSeconds(4));
         $x("//*[contains(text(), 'Отправить запрос')]").click();
 
         $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
@@ -1260,10 +1277,10 @@ public class TestSteps {
     }
 
     @Step("Зачет платежа")
-    public void request27() {
+    public void request27() throws InterruptedException {
         $(".button-send-request").click();
         Selenide.switchTo().window("Запросы | Альфа-лизинг");
-         $x("//*[contains(text(), 'Создать новый')]").click();
+        // $x("//*[contains(text(), 'Создать новый')]").click();
         $(byText("Выберите категорию запроса. Заполните дополнительные поля")).shouldBe(visible);
         $(".select-button__content").click();
         $(".menu-item:nth-child(27)").click();
@@ -1280,7 +1297,11 @@ public class TestSteps {
 
         $(byText("Заявление на зачет переплаты")).shouldBe(visible);
         $("#zayavleniye").uploadFromClasspath("Анкета ЕИО цессионарий.xlsm");
+        $(".element-attachment__file-list").shouldBe(visible);
 
+        Thread.sleep(4000);
+
+        $x("//*[contains(text(), 'Отправить запрос')]").shouldBe(visible, Duration.ofSeconds(4));
         $x("//*[contains(text(), 'Отправить запрос')]").click();
 
         $x("//*[contains(text(), 'Запрос отправлен')]").shouldBe(visible);
@@ -1319,5 +1340,28 @@ public class TestSteps {
 
         $(".header-button-bar__menu .icon_name_arrow-down").click();
         $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Скачивание акта сверки")
+    public void downloadAct() {
+        $(byText("Документы")).click();
+        $(byText("Скан-копии документов по договорам")).shouldBe(visible);
+
+        $(".document-group", 3).$(".document-group-line").find(byText("Акт сверки")).click();
+
+        $x("//*[contains(text(), 'Скачать')]").click();
+        $(".notification__title").click();
+        $(".notification_visible .notification__closer").click();
+
+        $x("//*[contains(text(), 'Архив создан успешно')]").shouldBe(visible, Duration.ofSeconds(30));
+        $(".notification_visible .notification__closer").click();
+
+        $(".header-button-bar__menu .icon_name_arrow-down").click();
+        $(".header-popup-menu__item-button .icon_name_logout").click();
+    }
+
+    @Step("Скачивание акта сверки из договора")
+    public void downloadActFromContract() {
+
     }
 }
