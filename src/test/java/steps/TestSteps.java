@@ -14,7 +14,7 @@ public class TestSteps {
 
     @Step ("Главная страница")
     public void openMainPage() {
-        String BASE_URL = "https://lk-test.lk-kube.alfaleasing.ru/auth/login";
+        String BASE_URL = "https://lk-test.k8s-dev.yc.alfaleasing.ru/auth/login";
         open(BASE_URL);
      //   $(byId("details-button")).click();
      //   $(byId("proceed-link")).click();
