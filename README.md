@@ -1,1 +1,2 @@
-# qa_guru_allure
+Разработка UI автотестов для личного кабинета клиента.
+Используется Java + Junit + Selenide + Allure.
